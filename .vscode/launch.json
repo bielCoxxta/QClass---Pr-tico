@@ -5,21 +5,52 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "QClass-P",
-            "request": "launch",
-            "type": "dart"
-        },
-        {
-            "name": "QClass-P (profile mode)",
+            "name": "QClass-P Debug",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "profile"
+            "flutterMode": "debug",
+            "program": "base_app/lib/main_dev.dart",
+            "args": [
+                "--debug",
+                "--flavor",
+                "dev"
+            ]
         },
         {
-            "name": "QClass-P (release mode)",
+            "name": "QClass-P Prod Debug",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "release"
-        }
+            "flutterMode": "debug",
+            "program": "base_app/lib/main_prod.dart",
+            "args": [
+                "--debug",
+                "--flavor",
+                "prod"
+            ]
+        },
+        {
+            "name": "QClass-P Dev Release",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release",
+            "program": "base_app/lib/main_dev.dart",
+            "args": [
+                "--release",
+                "--flavor",
+                "dev"
+            ]
+        },
+        {
+            "name": "QClass-P Prod Release",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release",
+            "program": "base_app/lib/main_prod.dart",
+            "args": [
+                "--release",
+                "--flavor",
+                "prod"
+            ]
+        },
     ]
 }
