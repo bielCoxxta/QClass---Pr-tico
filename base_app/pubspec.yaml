@@ -16,6 +16,9 @@ dependencies:
     git: 
       url: git@github.com:bielCoxxta/design_system.git
       ref: developer  
+      
+  core:
+    path: ../core    
 
 
   cupertino_icons: ^1.0.6
