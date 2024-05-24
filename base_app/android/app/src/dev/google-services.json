@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "731218506057",
+    "project_id": "qclass-dev",
+    "storage_bucket": "qclass-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:731218506057:android:63c745c80710490fcb6a98",
+        "android_client_info": {
+          "package_name": "com.quadritech.qclassP.dev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgS42FMNmCEx1GGCFwQtP2XkPnTuVO7u4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
