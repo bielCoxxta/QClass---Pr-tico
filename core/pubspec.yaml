@@ -6,7 +6,18 @@ environment:
   sdk: ^3.2.5
 
 dependencies:
-  # path: ^1.8.0
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter  
+     
+  # navegação
+  flutter_modular: ^6.3.4
+  
+  # utilidades
+  equatable: ^2.0.5
+  flutter_screenutil: ^5.9.1
+  meta: ^1.11.0
 
 dev_dependencies:
   lints: ^2.1.0
