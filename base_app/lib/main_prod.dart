@@ -1,8 +1,9 @@
-import 'flavors.dart';
+import 'package:qclass_p/constants/config_envs.dart';
 
-import 'main.dart' as runner;
+import 'domain/enums/flavors_type.dart';
+import 'main.dart';
 
 Future<void> main() async {
-  F.appFlavor = Flavor.prod;
-  await runner.main();
+  await ConfigEnvs().loadEnv(FlavorsType.prod);
+  runBaseApp();
 }
