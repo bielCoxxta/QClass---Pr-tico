@@ -1,10 +1,10 @@
+import 'package:auth/auth.dart';
 import 'package:core/core.dart';
 import 'package:qclass_p/app_routes.dart';
 import 'package:qclass_p/constants/config_envs.dart';
 import 'package:qclass_p/presentation/pages/splash_page.dart';
 
 import 'domain/entities/environment_entity.dart';
-import 'presentation/controllers/theme_controller.dart';
 
 class AppModule extends Module {
   AppModule({required GlobalConfigs globalConfigs}) {
@@ -26,6 +26,7 @@ class AppModule extends Module {
   @override
   void routes(RouteManager r) {
     r.child(AppRoutes.root.path, child: (context) => const SplashPage());
+    r.module(AuthRoutes.root.path, module: AuthModule());
   }
 }
 

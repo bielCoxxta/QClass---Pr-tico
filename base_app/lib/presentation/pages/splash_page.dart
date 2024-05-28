@@ -1,8 +1,6 @@
+import 'package:auth/auth.dart';
 import 'package:core/core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-
-import 'package:qclass_p/presentation/controllers/theme_controller.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -13,6 +11,13 @@ class SplashPage extends StatefulWidget {
 
 class _SplashPageState extends State<SplashPage> {
   final x = Modular.get<ThemeController>();
+
+  @override
+  void initState() {
+    super.initState();
+    // verifica seção do usuário
+    Modular.to.navigate(AuthRoutes.root.path);
+  }
 
   @override
   Widget build(BuildContext context) {

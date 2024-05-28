@@ -5,8 +5,6 @@ import 'package:flutter/services.dart';
 import 'package:qclass_p/domain/entities/environment_entity.dart';
 import 'package:qclass_p/domain/enums/flavors_type.dart';
 
-import '../controllers/theme_controller.dart';
-
 class AppWidget extends StatefulWidget {
   const AppWidget({super.key});
 
@@ -37,6 +35,12 @@ class _AppWidgetState extends State<AppWidget> {
         return ValueListenableBuilder<ThemeMode>(
           valueListenable: themeController,
           builder: (context, state, _) {
+            SystemChrome.setSystemUIOverlayStyle(
+              state == ThemeMode.light
+                  ? SystemUiOverlayStyle.light
+                  : SystemUiOverlayStyle.dark,
+            );
+
             return ScreenUtilInit(
               designSize: size,
               minTextAdapt: true,
