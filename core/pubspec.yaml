@@ -1,6 +1,7 @@
 name: core
 description: Core do sistema QClass
 version: 0.0.1
+publish_to: "none"
 
 environment:
   sdk: ^3.2.5
@@ -11,13 +12,20 @@ dependencies:
   flutter_localizations:
     sdk: flutter  
      
-  # navegação
+  #====== Navegação ======
   flutter_modular: ^6.3.4
   
-  # utilidades
+  #====== Utilidades ======
   equatable: ^2.0.5
   flutter_screenutil: ^5.9.1
   meta: ^1.11.0
+
+  #====== Firebase ======
+  firebase_core: ^2.31.1
+  cloud_firestore: ^4.17.4
+  firebase_storage: ^11.7.6
+  firebase_analytics: ^10.10.6
+  firebase_in_app_messaging: 0.7.4+3
 
 dev_dependencies:
   lints: ^2.1.0
