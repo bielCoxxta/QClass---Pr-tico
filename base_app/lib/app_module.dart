@@ -5,6 +5,7 @@ import 'package:qclass_p/constants/config_envs.dart';
 import 'package:qclass_p/presentation/pages/splash_page.dart';
 
 import 'domain/entities/environment_entity.dart';
+import 'presentation/controllers/init_app_controller.dart';
 
 class AppModule extends Module {
   AppModule({required GlobalConfigs globalConfigs}) {
@@ -14,13 +15,18 @@ class AppModule extends Module {
 
   @override
   void binds(Injector i) {
-    // Global configs
-
+    //==== Global configs ====
     i.addSingleton<CrashLog>(() => _globalConfigs.crashLog);
     i.addSingleton<EnvironmentEntity>(() => ConfigEnvs.environment);
-    i.addSingleton<ThemeController>(ThemeController.new);
 
-    // Controllers
+    // ==== package_info ====
+    i.addSingleton<IPackageInfoDriver>(PackageInfoDriver.new);
+    i.addSingleton<IPackageInfoService>(PackageInfoService.new);
+    i.addSingleton<PackageInfoEntity>(() => _globalConfigs.appInfo);
+
+    //==== Controllers ====
+    i.addSingleton<ThemeController>(ThemeController.new);
+    i.addSingleton<InitAppController>(InitAppController.new);
   }
 
   @override
@@ -39,8 +45,19 @@ class GlobalConfigs {
   factory GlobalConfigs() => _singleton;
   GlobalConfigs._internal();
 
-  // log de erros
+  //==== log de erros ====
   CrashLog get crashLog => CrashLog();
+
+  // ==== infoAPP ====
+  var currentAppInfo = PackageInfoEntity(
+    appName: 'QClass',
+    name: 'QClass',
+    version: 'unknow',
+    buildNumber: 0,
+    buildSignature: '',
+    forceUpdate: false,
+  );
+  PackageInfoEntity get appInfo => currentAppInfo;
 
   /// Permission
   // PermissionService get permissionService => PermissionService();
