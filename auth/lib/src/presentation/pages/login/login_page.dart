@@ -54,12 +54,11 @@ class _LoginPageState extends State<LoginPage> {
           ? _colorScheme.secondary
           : _colorScheme.onBackground,
       body: FullSizeScrollableWidget(
-        child: SafeArea(
-          bottom: false,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Align(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            SafeArea(
+              child: Align(
                 alignment: Alignment.topRight,
                 child: IconButton(
                   icon: Icon(
@@ -76,134 +75,138 @@ class _LoginPageState extends State<LoginPage> {
                   },
                 ),
               ),
-              const Spacer(),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: Spacing.xxxl.value,
-                ),
-                child: CustomImage(
-                  svgAsset: AssetsPath.qclassLogo2,
-                  packageName: AssetsPath.packageName,
-                  imageColor: AppColorsBase.white,
-                ),
+            ),
+            const Spacer(),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: Spacing.xxxl.value,
               ),
-              const Spacer(),
-              Align(
-                alignment: Alignment.bottomCenter,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.only(
-                    topLeft: AppThemeBase.radiusCircular,
-                    topRight: AppThemeBase.radiusCircular,
-                  ),
-                  child: ColoredBox(
-                    color: _colorScheme.background,
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: SafeArea(
-                        top: false,
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: Spacing.md.value,
-                          ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Spacing.md.vertical,
-                              Center(
-                                child: Text(
-                                  'Entre com seu usuário',
-                                  style: _textTheme.titleMedium,
+              child: CustomImage(
+                svgAsset: AssetsPath.qclassLogo2,
+                packageName: AssetsPath.packageName,
+                imageColor: AppColorsBase.white,
+              ),
+            ),
+            const Spacer(),
+            Spacing.md.vertical,
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: ClipRRect(
+                borderRadius: BorderRadius.only(
+                  topLeft: AppThemeBase.radiusCircular,
+                  topRight: AppThemeBase.radiusCircular,
+                ),
+                child: ColoredBox(
+                  color: _colorScheme.background,
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: SafeArea(
+                      top: false,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: Spacing.md.value,
+                        ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Spacing.md.vertical,
+                            Center(
+                              child: Text(
+                                'Entre com seu usuário',
+                                style: _textTheme.titleMedium,
+                              ),
+                            ),
+                            Spacing.md.vertical,
+                            CustomInputField(
+                              key: cpfField,
+                              enabled: !isLoading,
+                              controller: cpfController,
+                              hintText: '000.000.000-00',
+                              keyboardType: TextInputType.number,
+                              validators: const [
+                                FormValidators.emptyField,
+                                FormValidators.invalidCPF,
+                              ],
+                              inputFormatters: [
+                                FilteringTextInputFormatter.digitsOnly,
+                                FormMasks.cpf(),
+                              ],
+                              onChanged: validateCpf,
+                              labelWidget: const InputLabel(
+                                label: 'Informe seu CPF',
+                              ),
+                            ),
+                            Spacing.sm.vertical,
+                            CustomInputField(
+                              hintText: 'Digite aqui',
+                              controller: passController,
+                              enabled: !isLoading,
+                              obscureText: hidePassword,
+                              labelWidget: const InputLabel(label: 'Senha'),
+                              onChanged: validatePass,
+                              suffixIcon: IconButton(
+                                icon: Icon(
+                                  hidePassword
+                                      ? Icons.visibility
+                                      : Icons.visibility_off_rounded,
+                                  color: _colorScheme.onBackground,
                                 ),
+                                onPressed: () async {
+                                  setState(() {
+                                    hidePassword = !hidePassword;
+                                  });
+                                },
                               ),
-                              Spacing.md.vertical,
-                              CustomInputField(
-                                key: cpfField,
-                                enabled: !isLoading,
-                                controller: cpfController,
-                                hintText: '000.000.000-00',
-                                keyboardType: TextInputType.number,
-                                validators: const [
-                                  FormValidators.emptyField,
-                                  FormValidators.invalidCPF,
-                                ],
-                                inputFormatters: [
-                                  FilteringTextInputFormatter.digitsOnly,
-                                  FormMasks.cpf(),
-                                ],
-                                onChanged: validateCpf,
-                                labelWidget: const InputLabel(
-                                  label: 'Informe seu CPF',
+                            ),
+                            Spacing.xs.vertical,
+                            InkWell(
+                              onTap: () {},
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                  vertical: Spacing.xxs.value,
+                                  horizontal: 2.responsiveWidth,
                                 ),
-                              ),
-                              Spacing.sm.vertical,
-                              CustomInputField(
-                                hintText: 'Digite aqui',
-                                controller: passController,
-                                enabled: !isLoading,
-                                obscureText: hidePassword,
-                                labelWidget: const InputLabel(label: 'Senha'),
-                                onChanged: validatePass,
-                                suffixIcon: IconButton(
-                                  icon: Icon(
-                                    hidePassword
-                                        ? Icons.visibility
-                                        : Icons.visibility_off_rounded,
-                                    color: _colorScheme.onBackground,
-                                  ),
-                                  onPressed: () async {
-                                    setState(() {
-                                      hidePassword = !hidePassword;
-                                    });
-                                  },
-                                ),
-                              ),
-                              Spacing.xs.vertical,
-                              InkWell(
-                                onTap: () {},
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                    vertical: Spacing.xxs.value,
-                                    horizontal: 2.responsiveWidth,
-                                  ),
-                                  child: Align(
-                                    alignment: Alignment.centerRight,
-                                    child: Text(
-                                      'Esqueci a senha',
-                                      style: _textTheme.labelMedium,
-                                      textAlign: TextAlign.right,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Spacing.xxxl.vertical,
-                              CustomButton.text(
-                                isEnabled: activeButton,
-                                isLoading: isLoading,
-                                text: 'Entrar',
-                                onPressed: () {},
-                              ),
-                              Spacing.xxxl.vertical,
-                              Center(
-                                child: Text(
-                                  'Version ${infoApp.version}',
-                                  style:
-                                      context.textTheme.labelMedium?.copyWith(
-                                    color: AppColorsBase.info,
+                                child: Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Text(
+                                    'Esqueci a senha',
+                                    style: _textTheme.labelMedium,
+                                    textAlign: TextAlign.right,
                                   ),
                                 ),
                               ),
-                              Spacing.md.vertical,
-                            ],
-                          ),
+                            ),
+                            Spacing.xxxl.vertical,
+                            CustomButton.text(
+                              isEnabled: activeButton,
+                              isLoading: isLoading,
+                              text: 'Entrar',
+                              onPressed: () {
+                                setState(() {
+                                  isLoading = true;
+                                });
+                              },
+                            ),
+                            Spacing.xxxl.vertical,
+                            Center(
+                              child: Text(
+                                'Version ${infoApp.version}',
+                                style: context.textTheme.labelMedium?.copyWith(
+                                  color: AppColorsBase.info,
+                                ),
+                              ),
+                            ),
+                            Spacing.md.vertical,
+                          ],
                         ),
                       ),
                     ),
                   ),
                 ),
-              )
-            ],
-          ),
+              ),
+            )
+          ],
         ),
       ),
     );
