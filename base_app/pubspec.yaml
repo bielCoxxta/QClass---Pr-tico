@@ -21,9 +21,9 @@ dependencies:
     path: ../design_system
   core:
     path: ../core
-
   auth:
-    path: ../auth    
+    path: ../auth   
+
   cupertino_icons: ^1.0.6
   flutter_dotenv: ^5.1.0
 
