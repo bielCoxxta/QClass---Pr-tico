@@ -12,13 +12,8 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # design_system_qclass:
-  #   git: 
-  #     url: git@github.com:bielCoxxta/design_system.git
-  #     ref: developer  
-
   design_system_qclass:
-    path: ../design_system
+    path: ../../qclass-design-system # Tem que adicionar futuramente o SSH
   core:
     path: ../core
   auth:

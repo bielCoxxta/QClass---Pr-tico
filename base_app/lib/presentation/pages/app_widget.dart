@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:qclass_p/domain/entities/environment_entity.dart';
 import 'package:qclass_p/domain/enums/flavors_type.dart';
+// import 'package:design_system_qclass/lib';
 
 class AppWidget extends StatefulWidget {
   const AppWidget({super.key});

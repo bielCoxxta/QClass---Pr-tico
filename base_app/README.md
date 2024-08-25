@@ -1,16 +1,7 @@
-# qclass_p
+![](https://img.shields.io/badge/Flutter-3.22.2-blue)
+![](https://img.shields.io/static/v1?label=Vers%C3%A3o%20do%20projeto&message=0.0.1&color=a068ff&style=%3CSTYLE%3E&logo=%3CLOGO%3E)
 
-Projeto do QClass prático utilizando nova arquitetura
+## PROJETO
+Este é o projeto que roda todos os módulos e configura o sistema do QClass V3.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
